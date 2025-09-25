@@ -87,13 +87,15 @@ Key Points
 ```javascript
 const value = useContext(MyContext);
 
-Used
+How To Use
    -Create a context using→ React.createContext(defaultValue)
    -Provide a  context value in parent component → <Context.Provider value={...}>
    -Consume the context value in any child component using useContext → const value = useContext(Context)
+
 Explanation
    -MyContext → The context object created via React.createContext()
    -value → The current value of the context (provided by the nearest <MyContext.Provider>)
+
  Summary
 - useContext allows functional components to access context values directly
 - Eliminates the need for nested <Context.Consumer> components
