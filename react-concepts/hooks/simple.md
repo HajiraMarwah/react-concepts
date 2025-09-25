@@ -27,13 +27,14 @@ Before Hooks, state and lifecycle methods were only available in **class compone
 
 ```javascript
 const [state, setState] = useState(initialValue);
+
 ### Explanation
 
 - `state` → Current value of the state variable.  
 - `setState` → Function used to update the state.  
 - `initialValue` → Initial value of the state (can be number, string, boolean, array, object, etc.).
 
-### Summary
+Summary
 
 - `useState` allows **functional components to have state**, similar to class components.  
 - Calling `setState` **updates the state** and triggers a **re-render** of the component.  
