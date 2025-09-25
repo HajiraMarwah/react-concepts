@@ -29,18 +29,19 @@ Before Hooks, state and lifecycle methods were only available in **class compone
 // Syntax
 const [state, setState] = useState(initialValue);
 
-// Explanation
-// state → Current value of the state variable
-// setState → Function used to update the state
-// initialValue → Initial value of the state (number, string, boolean, array, object, etc.)
+ ## Explanation
+- `state` → Current value of the state variable.  
+- `setState` → Function used to update the state.  
+- `initialValue` → Initial value of the state (can be number, string, boolean, array, object, etc.).
 
-// Summary
-// - useState allows functional components to have state
-// - Calling setState updates the state and triggers a re-render
-// - Always use setState to change the state value
-// - Can manage primitive values, objects, arrays, and more
-// - Multiple useState hooks can exist in one component
-// - Supports lazy initialization for expensive initial state values
+  ##Summary
+- useState allows functional components to have state
+- Calling setState updates the state and triggers a re-render
+- Always use setState to change the state value
+- Can manage primitive values, objects, arrays, and more
+- Multiple useState hooks can exist in one component
+- Supports lazy initialization for expensive initial state values
+````
 ### 2️⃣ `useEffect`
 
 `useEffect` is used to perform **side effects** in functional components, such as API calls, timers, and subscriptions.
