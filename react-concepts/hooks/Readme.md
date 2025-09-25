@@ -68,10 +68,32 @@ useEffect(() => {
 }, [dependencies]);
 
 Key Points
-- **Runs after render** → DOM is already updated.  
-- **Dependencies array controls when it runs:**  
+- **Runs after render → DOM is already updated.  
+- **Dependencies array controls when it runs:  
   - `[]` → runs **once** on mount  
   - `[state]` → runs **on state change**  
   - No array → runs **after every render**  
 - **Cleanup function** → used for intervals, subscriptions, or any manual DOM cleanup.  
 - Can replace all **class component lifecycle methods**.
+```
+### 3️⃣ `useContext`
+   `useContext` lets you **consume context values** in functional components without using `<Context.Consumer>`.
+   Instead of passing props through multiple levels (prop drilling), useContext lets you access the context value directly wherever you need it.
+   
+   **All in one block (Syntax, Explanation, Summary):**
+
+**Syntax:**
+
+```javascript
+const value = useContext(MyContext);
+
+Explanation
+   -MyContext → The context object created via React.createContext()
+   -value → The current value of the context (provided by the nearest <MyContext.Provider>)
+ Summary
+- useContext allows functional components to access context values directly
+- Eliminates the need for nested <Context.Consumer> components
+- Makes code cleaner and easier to read
+- Re-renders the component when the context value changes
+- Ideal for sharing global data like themes, auth status, or settings
+
