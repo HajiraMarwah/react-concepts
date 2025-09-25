@@ -135,8 +135,9 @@ Key Points About useRef
 ```
 ### 5️⃣ `useCallback`
    `useCallback` is a React Hook that returns a memoized version of a function.
-      -This means the function is recreated only when its dependencies change, not on every render.
-      -👉 Useful when you pass functions as props to child components (to prevent unnecessary re-renders).
+
+   -This means the function is recreated only when its dependencies change, not on every render.
+   -👉 Useful when you pass functions as props to child components (to prevent unnecessary re-renders).
 
 **Syntax:**
 
