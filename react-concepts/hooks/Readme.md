@@ -102,4 +102,33 @@ Explanation
 - Makes code cleaner and easier to read
 - Re-renders the component when the context value changes
 - Ideal for sharing global data like themes, auth status, or settings
+```
+### 3️⃣ `useRef`
+   `useRef` Persist values between renders (like a box that remembers something but        doesn’t trigger re-renders).
+   Directly access/manipulate DOM elements (like focusing an input).
+  
 
+**Syntax:**
+
+```javascript
+const refContainer = useRef(initialValue);
+
+Explation
+ -refContainer → an object with a .current property.
+ -initialValue → the initial value of .current.
+
+Example
+const inputRef = useRef(null);
+
+Common Use Cases
+  -Accessing DOM elements (like document.querySelector)
+  -Storing values that don’t need re-rendering
+  -Tracking previous values
+
+Key Points About useRef
+  -.current persists values across renders.
+  -Updating .current does not trigger a re-render.
+  -Great for DOM manipulation and storing mutable values.
+  -Can be used to track previous state.
+
+👉 So, useRef = A box that keeps a value between renders without causing re-renders.
