@@ -137,6 +137,7 @@ Key Points About useRef
    `useCallback` is a React Hook that returns a memoized version of a function.
 
    -This means the function is recreated only when its dependencies change, not on every render.
+
    -👉 Useful when you pass functions as props to child components (to prevent unnecessary re-renders).
 
 **Syntax:**
@@ -171,3 +172,93 @@ Key Points About useCallback
 👉 In short: useCallback is for memoizing functions, just like useMemo is for memoizing values.
 
 ```
+### 6️⃣ `useMemo`
+   `useMemo` is a React Hook that memoizes the result of a calculation.
+     It caches the value and recomputes it only when its dependencies change.
+
+   👉 Don’t recalculate this expensive computation unless you really have to!”
+
+**Syntax:**
+
+```javascript
+const memoizedValue = useMemo(() => {
+  // expensive calculation
+  return result;
+}, [dependencies]);
+
+
+
+Explanation
+  -memoizedValue → cached result.
+  -[dependencies] → if values inside change → recalculate. Otherwise → return cached result.
+
+Why use useMemo?
+ -Prevents expensive recalculations (e.g., loops, filtering, sorting, heavy math).
+ -Improves performance in large apps.
+ -Works best when combined with pure functions (functions without side effects).
+
+
+Key Points About useMemo
+   -Caches results of expensive calculations.
+   -Runs only when dependencies change.
+   -Great for filtering, sorting, or heavy loops.
+   -Use with care → don’t use useMemo everywhere, only when performance is a real concern.
+   -If dependencies array is empty [], it runs only once.
+
+
+```
+
+### 7️⃣ `useReducer`
+   `useReducer` is an alternative to useState for managing complex state logic.
+
+   -Useful when state transitions depend on multiple conditions or when you want cleaner state management.
+
+   -Similar to Redux (but built into React).
+
+   👉 Think of it as:
+“Instead of juggling multiple useStates, let’s have one place (a reducer) that decides how state changes.”
+
+**Syntax:**
+
+```javascript
+const [state, dispatch] = useReducer(reducer, initialState);
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "ACTION_NAME":
+      return { ...state, updatedValue: action.payload };
+    default:
+      return state;
+  }
+}
+
+
+Explanation
+  -state → current state.
+  -dispatch → function to send actions.
+  -reducer → function describing how state changes.
+  -initialState → starting state.
+
+Why use useReducer?
+   -When state is complex (e.g., multiple values, nested objects).
+   -When state transitions depend on different actions.
+   -When you want predictable and organized state updates.
+
+Reducer Pattern Advantages
+   -Centralized logic → state updates are in one place.
+   -Easy to test and debug (just test reducer function).
+   -Predictable state flow (similar to Redux).
+   -Great for medium/large apps with complex state.
+
+Key Points About useMemo
+   1.Best for complex state logic.
+   2.Provides a centralized way to update state using actions.
+   3.Returns [state, dispatch] instead of [value, setter].
+   4.Similar to Redux but built-in and simpler.
+   5.Helps avoid prop drilling when combined with useContext.
+   6.Great for managing forms, counters, UI states.
+   7.Prefer useState for simple state, useReducer for complex state.
+
+
+```
+
