@@ -103,7 +103,7 @@ Explanation
 - Re-renders the component when the context value changes
 - Ideal for sharing global data like themes, auth status, or settings
 ```
-### 3️⃣ `useRef`
+### 4️⃣ `useRef`
    `useRef` Persist values between renders (like a box that remembers something but        doesn’t trigger re-renders).
    Directly access/manipulate DOM elements (like focusing an input).
   
@@ -132,3 +132,41 @@ Key Points About useRef
   -Can be used to track previous state.
 
 👉 So, useRef = A box that keeps a value between renders without causing re-renders.
+```
+### 5️⃣ `useCallback`
+   `useCallback` is a React Hook that returns a memoized version of a function.
+      -This means the function is recreated only when its dependencies change, not on every render.
+      -👉 Useful when you pass functions as props to child components (to prevent unnecessary re-renders).
+
+**Syntax:**
+
+```javascript
+const memoizedCallback = useCallback(
+  () => {
+    // function logic
+  },
+  [dependencies]
+);
+
+
+Explanation
+ -memoizedCallback → cached version of the function.
+ -[dependencies] → function is recreated only if these values change.
+
+Why use useCallback?
+ -Without useCallback, functions are recreated on every render.
+This can cause:
+ -Performance issues in large apps.
+ -Unnecessary re-renders in child components (if they are wrapped with React.memo).
+
+
+Key Points About useCallback
+  -Prevents unnecessary re-creations of functions.
+  -Useful with React.memo child components.
+  -Helps with performance optimization in large apps.
+  -If dependencies array is empty [], the function is created once and reused.
+  -If dependencies change, a new function is created.
+
+👉 In short: useCallback is for memoizing functions, just like useMemo is for memoizing values.
+
+```
