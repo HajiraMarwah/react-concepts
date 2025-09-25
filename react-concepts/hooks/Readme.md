@@ -28,7 +28,7 @@ Before Hooks, state and lifecycle methods were only available in **class compone
 ```javascript
 const [state, setState] = useState(initialValue);
 
-### Explanation
+Explanation
 
 - `state` → Current value of the state variable.  
 - `setState` → Function used to update the state.  
@@ -66,8 +66,8 @@ useEffect(() => {
     // cleanup code (optional)
   };
 }, [dependencies]);
-### Key Points
 
+Key Points
 - **Runs after render** → DOM is already updated.  
 - **Dependencies array controls when it runs:**  
   - `[]` → runs **once** on mount  
