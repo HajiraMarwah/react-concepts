@@ -265,3 +265,19 @@ Key Points About useReducer
 
 ```
 
+### 8️⃣ `Custom Hook`
+   - A Custom Hook is a JavaScript function whose name starts with use and can call other React hooks (useState, useEffect, etc.).
+   - It allows you to reuse logic across multiple components without repeating code.
+   - Essentially, it’s a way to extract stateful logic from components into reusable functions.
+
+
+**Rules for Custom Hooks:**
+    1.The function name must start with use.
+    2.You can use built-in hooks inside it (useState, useEffect, useReducer, etc.).
+    3.It must be called inside a React component or another hook, not in regular JavaScript functions.
+
+
+**Why Use Custom Hooks:**
+   1.Avoid code duplication
+   2.Make components cleaner
+   3.Share logic between multiple components

@@ -1,0 +1,9 @@
+/* App.css */
+html, body button {
+  font-size: 22px;  /* change this to whatever size you want */
+  font-family: Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
