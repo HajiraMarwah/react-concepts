@@ -8,14 +8,14 @@ const Child=React.memo(({onClick})=>{
 function App() {
   const [text, setTect] = useState("")
   const [count, setCount] = useState(0)
-  
-//without useCallback new function gets created every render
+
+//Without useCallback → new function created on every render
 // const Increment=()=>{
 //   setCount(count+1) //child is rendereed  evrytime on incremnt
 // }
 
 
-//with callback function remain same untill dependcy changes
+//With useCallback → function reference is stable unless dependencies change
 const Increment=useCallback(()=>{
    setCount((prev)=>prev+1)   //here with callback child rendered wont come
 },[])
