@@ -8,8 +8,8 @@ function slowFactorial(n){
   if(n<=0)return 1
   let result=1
   for(let i=1;i<=n;i++){
-    //for heavy
-    for(let j=0;j<1e6;j++){}
+   
+    for(let j=0;j<1e6;j++){}  // not needed only for heavy calculation
     result*=i
   }
   return result
