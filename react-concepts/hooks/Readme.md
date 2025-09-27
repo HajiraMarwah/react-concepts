@@ -78,6 +78,7 @@ Key Points
 ```
 ### 3️⃣ `useContext`
    `useContext` lets you **consume context values** in functional components without using `<Context.Consumer>`.
+   useContext is a React Hook that allows you to share state or values between components without passing props manually.
    Instead of passing props through multiple levels (prop drilling), useContext lets you access the context value directly wherever you need it.
    
    **All in one block (Syntax, Explanation, Summary):**
