@@ -7,7 +7,7 @@ It is widely used for creating **single-page applications (SPAs)** and dynamic w
 
 ## 🔹 Features of React  
 
-- **Component-Based Architecture** → Build encapsulated components that manage their own state and logic.  
+- **Component-Based Architecture** →  components that manage their own state and logic.  
 - **JSX (JavaScript XML)** → Write HTML inside JavaScript, making code more readable.  
 - **Virtual DOM** → Efficient updates and rendering, improving performance.  
 - **Unidirectional Data Flow** → Data flows from parent to child, making debugging easier.  
