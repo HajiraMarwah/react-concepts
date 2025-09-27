@@ -235,8 +235,8 @@ function reducer(state, action) {
 
 Explanation
   -state → current state.
-  -dispatch → function to send actions.
-  -reducer → function describing how state changes.
+  -dispatch → function used to send actions to the reducer.
+  -reducer → function that updates state based on action.
   -initialState → starting state.
 
 Why use useReducer?
@@ -250,14 +250,16 @@ Reducer Pattern Advantages
    -Predictable state flow (similar to Redux).
    -Great for medium/large apps with complex state.
 
-Key Points About useMemo
+Key Points About useReducer
    1.Best for complex state logic.
    2.Provides a centralized way to update state using actions.
-   3.Returns [state, dispatch] instead of [value, setter].
-   4.Similar to Redux but built-in and simpler.
-   5.Helps avoid prop drilling when combined with useContext.
-   6.Great for managing forms, counters, UI states.
-   7.Prefer useState for simple state, useReducer for complex state.
+   3.dispatch does not change state immediately; it schedules a state update.
+   4.State updates are predictable, because the reducer always returns a new state.
+   5.Returns [state, dispatch] instead of [value, setter].
+   6.Similar to Redux but built-in and simpler.
+   7.Helps avoid prop drilling when combined with useContext.
+   8.Great for managing forms, counters, UI states.
+   9.Prefer useState for simple state, useReducer for complex state.
 
 
 ```
