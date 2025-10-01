@@ -59,6 +59,19 @@ export default ParentComponent;
   - count is a state variable.
   - setCount updates the state.
   - Clicking the button increases count and re-renders the component.
- 
+ ## 3. Differences between Props and State
+
+| Feature        | Props                                     | State                                         |
+| -------------- | ----------------------------------------- | --------------------------------------------- |
+| **Definition** | Data passed from parent to child          | Data managed within the component             |
+| **Mutability** | Read-only                                 | Mutable                                       |
+| **Usage**      | To pass data and make components reusable | To store and update dynamic data              |
+| **Updating**   | Cannot be updated by the component itself | Can be updated using `setState` or `useState` |
+| **Trigger Render** | Changing props re-renders child       | Changing state re-renders component           |
+| **Scope**      | Accessible in child component             | Local to the component                        |
+---
+ **Summary**
+  1. Props: Immutable, passed from parent to child, used for reusable components.
+  2. State: Mutable, managed inside the component, used for interactive behavior.
 
 
