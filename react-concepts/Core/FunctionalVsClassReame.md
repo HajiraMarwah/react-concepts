@@ -75,3 +75,19 @@ export default Greeting;
  - Uses useState, useEffect, and other hooks for state and side effects.
  - No this keyword required.
  - Recommended in modern React development.
+
+ ## 3. Differences between Class and Functional Components
+ | Feature           | Class Component                           | Functional Component                       |
+|------------------|-------------------------------------------|-------------------------------------------|
+| Syntax            | ES6 class                                 | JavaScript function                        |
+| State             | `this.state`                              | `useState` hook                            |
+| Props             | `this.props`                              | Function parameter `props`                 |
+| Lifecycle Methods | `componentDidMount`, `componentDidUpdate` | `useEffect` hook                           |
+| `this` keyword    | Required                                  | Not required                               |
+| Code verbosity    | More verbose                              | More concise                               |
+| Performance       | Slightly slower in older React versions   | Slightly faster and modern React optimized|
+| Recommended use   | Older projects / legacy code              | Modern React / Hooks                       |
+---
+**Summary**
+ 1. Functional Components: simpler, use hooks, preferred in modern React.
+ 2. Class Components: verbose, use this and lifecycle methods, mostly used in older projects.
