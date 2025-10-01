@@ -48,8 +48,8 @@ ReactDOM.render(
   document.getElementById('root')
 );
 ```
-***Explanation**
- - <div>, <h1>, and <p> look like HTML but are JSX elements.
+***Explanation***
+ - `<div>`, `<h1>`, and `<p>` look like HTML but are JSX elements.
  - {name} inside JSX allows embedding JavaScript expressions.
  - Greeting is a React component that returns JSX.
 
