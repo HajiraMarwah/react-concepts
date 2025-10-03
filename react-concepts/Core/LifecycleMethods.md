@@ -83,7 +83,7 @@ class LifecycleDemo extends React.Component {
 
 export default LifecycleDemo;
 ```
-***Typical Execution Order**
+**Typical Execution Order**
    1. When the component mounts
    ```scss
     1. constructor()
@@ -91,4 +91,21 @@ export default LifecycleDemo;
     3. render()
     4. componentDidMount()
    ```
+   2. When the component updates:
+   ```scss
+   1. getDerivedStateFromProps()
+   2. shouldComponentUpdate()
+   3. render()
+   4. getSnapshotBeforeUpdate()
+   5. componentDidUpdate()
+  ```
+  3. When the component unmounts:
+  ```scss
+    1. componentWillUnmount()
+  ```
+
+***Key Takeaway***
+  1. Mounting → Setup (constructor, API calls).
+  2. Updating → Respond to prop/state changes.
+  3. Unmounting → Cleanup.
    
