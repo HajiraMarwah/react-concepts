@@ -64,11 +64,11 @@ class LifecycleDemo extends React.Component {
   }
 
   componentWillUnmount() {
-    console.log("7. Component Will Unmount - Cleanup");
+    console.log( "Component Will Unmount - Cleanup");
   }
 
   render() {
-    console.log("3/5. Render called");
+    console.log(" Render called");
     return (
       <div>
         <h2>React Lifecycle Demo</h2>
@@ -86,8 +86,9 @@ export default LifecycleDemo;
 ***Typical Execution Order**
    1. When the component mounts
    ```scss
-   1. constructor()
-   2. getDerivedStateFromProps()
-   3. render()
-   4. componentDidMount()
+    1. constructor()
+    2. getDerivedStateFromProps()
+    3. render()
+    4. componentDidMount()
    ```
+   
