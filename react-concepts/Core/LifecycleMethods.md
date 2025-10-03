@@ -41,12 +41,36 @@ This method is called when the component is removed from the DOM.
 ## Example: Lifecycle in a Class Component
 
 ```jsx
+import React from 'react';
+import LifeCycle from './LifeCycle';
+
+class App extends React.Component {
+  state = { show: true };
+
+  render() {
+    return (
+      <div>
+        <button onClick={() => this.setState({ show: !this.state.show })}>
+          Toggle LifeCycle
+        </button>
+        {this.state.show && <LifeCycle />}
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+```js
 import React from "react";
 
 class LifecycleDemo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { count: 0 };
+    this.state = { 
+      count: 0 ,
+      show:true
+    };
     console.log("1. Constructor called");
   }
 
@@ -65,6 +89,9 @@ class LifecycleDemo extends React.Component {
 
   componentWillUnmount() {
     console.log( "Component Will Unmount - Cleanup");
+  }
+  toggleComponent=()=>{
+    this.setState({show:!this.state.show})
   }
 
   render() {
@@ -108,4 +135,10 @@ export default LifecycleDemo;
   1. Mounting → Setup (constructor, API calls).
   2. Updating → Respond to prop/state changes.
   3. Unmounting → Cleanup.
-   
+
+**Why Use Lifecycle Methods?**
+
+Lifecycle methods let you run code at specific points in a component’s life: when it is created (mounted), updated (re-rendered), or destroyed (unmounted).
+This is important because React components are not always permanent — they can appear, update many times, and then disappear.
+
+Without lifecycle methods, you wouldn’t know when to fetch data, clean up, or update things.
