@@ -81,3 +81,14 @@ If MyComponent throws an error during rendering, the ErrorBoundary will catch it
 | ✅ Log errors | Use `componentDidCatch` to send errors to a monitoring service |
 | ✅ Use multiple boundaries | Wrap different parts of the UI separately for more granular error handling |
 | ❌ Don’t wrap everything | Overusing boundaries can hide errors and make debugging harder |
+# ⚛️ Error Boundaries vs Error Handling in React
+
+| Concept | Description | Scope / Usage |
+|---------|-------------|---------------|
+| **Error Boundaries** | Special React components that catch **JavaScript errors in the rendering phase, lifecycle methods, and constructors of child components** | Used to prevent the entire React app from crashing. Provides a fallback UI. Introduced in React 16. |
+| **Error Handling** | General programming practice to catch errors using **try-catch blocks, conditional checks, or promise `.catch()`** | Used to handle errors in functions, event handlers, async code, or API calls. Does **not** prevent component crashes in the render phase by itself. |
+
+### 🧩 Key Differences 
+- Error Boundaries are **React-specific** and work during **rendering**, **lifecycle methods**, and **constructors** of child components.
+- Error Handling is **JavaScript-level** and works for **event handlers, async code, API calls, and custom logic**.
+- Error Boundaries cannot catch errors in event handlers; you must use normal error handling (`try-catch`) there.
