@@ -172,47 +172,124 @@ export default App;
    - Profile and Settings are nested routes under Dashboard.
    - <Outlet /> renders the child route component inside the parent.
    - NavLink is used for navigation and highlights the active link.
+
 ## 4️⃣ Programmatic Navigation (useNavigate)
 
 useNavigate hook allows you to navigate programmatically (e.g., after form submission or button click).
-```js
-import { useNavigate } from "react-router-dom";
 
+**Example: Programmatic Navigation with `useNavigate`**
+
+```jsx
+import React from "react";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
+
+// Pages
+function Home() {
+  return <h2>Home Page</h2>;
+}
+
+function Dashboard() {
+  return <h2>Dashboard Page</h2>;
+}
+
+// Component with programmatic navigation
 function Login() {
   const navigate = useNavigate();
 
   const handleLogin = () => {
-    // perform login logic
-    navigate("/dashboard"); // redirects user
+    // Perform login logic here (e.g., authentication)
+    navigate("/dashboard"); // Redirect to Dashboard after login
   };
 
   return <button onClick={handleLogin}>Login</button>;
 }
+
+// App component
+function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
 ```
+  **Explanation**
+  -  useNavigate hook is used to navigate programmatically.
+  -  Clicking the Login button redirects the user to the Dashboard page without a page reload.
+  - Useful for redirects after form submissions, authentication, or actions.
 ## 5️⃣ Protected Routes and Authentication
 
 Protected routes restrict access based on authentication status.
-```js
-import { Navigate } from "react-router-dom";
 
+**Example: Protected Routes**
+
+```jsx
+import React, { useState } from "react";
+import { BrowserRouter, Routes, Route, Navigate, useNavigate } from "react-router-dom";
+
+// Pages
+function Home() {
+  return <h2>Home Page</h2>;
+}
+
+function Dashboard() {
+  return <h2>Dashboard - Protected</h2>;
+}
+
+function Login({ setIsAuth }) {
+  const navigate = useNavigate();
+
+  const handleLogin = () => {
+    setIsAuth(true);           // Set authentication
+    navigate("/dashboard");    // Redirect to protected page
+  };
+
+  return <button onClick={handleLogin}>Login</button>;
+}
+
+// ProtectedRoute Component
 function ProtectedRoute({ isAuth, children }) {
   if (!isAuth) {
-    return <Navigate to="/login" />; // redirect to login if not authenticated
+    return <Navigate to="/login" />; // Redirect if not authenticated
   }
   return children;
 }
+
+// App Component
+function App() {
+  const [isAuth, setIsAuth] = useState(false);
+
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login setIsAuth={setIsAuth} />} />
+        <Route
+          path="/dashboard"
+          element={
+            <ProtectedRoute isAuth={isAuth}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
 ```
-**Usage:**
-```js
-<Routes>
-  <Route path="/dashboard" element={
-    <ProtectedRoute isAuth={userLoggedIn}>
-      <Dashboard />
-    </ProtectedRoute>
-  } />
-  <Route path="/login" element={<Login />} />
-</Routes>
-```
+ **Explanation**
+  - ProtectedRoute checks if the user is authenticated (isAuth).
+  - If not authenticated, it redirects to the Login page using <Navigate />.
+  - Once authenticated, the user can access the Dashboard page.
+  - useNavigate is used for programmatic redirection after login.
 ## ⚡  Summary 
 
 | Feature | Description |
