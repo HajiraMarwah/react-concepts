@@ -71,6 +71,55 @@ Suspense allows you to handle loading states for components or data.
   <ComponentB />
   </Suspense>
    ```
+  ## Code Splitting with React Router
+   Combine React.lazy() with React Router to load routes lazily:Each route loads only when visited.
+   ```js
+   import React, { Suspense, lazy } from "react";
+   import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
+   const Home = lazy(() => import("./Home"));
+   const About = lazy(() => import("./About"));
+
+  function App() {
+    return (
+    <Router>
+      <Suspense fallback={<div>Loading page...</div>}>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
+        </Routes>
+      </Suspense>
+    </Router>
+      );
+    }
+
+   export default App;
+   ```
+   ## Error Handling in Lazy Loading
+   Use Error Boundaries to handle failed lazy imports:
+   ```jsx
+     class ErrorBoundary extends React.Component {
+     state = { hasError: false };
+
+     static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return <h2>Something went wrong while loading.</h2>;
+    }
+    return this.props.children;
+  }
+   }
+
+  // Usage
+  <ErrorBoundary>
+  <Suspense fallback={<p>Loading...</p>}>
+    <LazyComponent />
+  </Suspense>
+</ErrorBoundary>
+```
 **How It Works**
  1. At build time, Webpack creates separate chunks for lazy-loaded components.
  2. When the component is rendered, the browser fetches the chunk dynamically.
