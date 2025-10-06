@@ -21,7 +21,20 @@ Benefits:
 
 `React.lazy` allows you to **dynamically import a component** only when it’s rendered.  
 
-### Example:
+**Example:**
+**1️⃣ Create a Lazy Component**
+
+📄 `About.jsx`
+```jsx
+import React from "react";
+
+const About = () => {
+  return <h2>About Page Loaded Lazily!</h2>;
+};
+
+export default About;
+```
+**2️⃣ Use React.lazy and Suspense in App**
 ```jsx
 import React, { Suspense } from "react";
 
