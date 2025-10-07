@@ -102,26 +102,5 @@ const getItemSize = index => (index % 2 === 0 ? 50 : 30);
 | **How it Works**      | Only visible items are rendered; off-screen items are not in the DOM, reducing load.          |
 | **Use Cases**         | Large lists, tables, grids, infinite scrolling, dashboards with thousands of rows.           |
 
-## Recap Example
-```js
-import React from "react";
-import { FixedSizeList as List } from "react-window";
 
-const data = Array.from({ length: 10000 }, (_, i) => `Item ${i + 1}`);
-
-function App() {
-  return (
-    <List
-      height={400}
-      itemCount={data.length}
-      itemSize={35}
-      width={300}
-    >
-      {({ index, style }) => <div style={style}>{data[index]}</div>}
-    </List>
-  );
-}
-
-export default App;
-```
 ✅ Even with 10,000 items, the DOM contains only visible rows for optimal performance.
