@@ -33,25 +33,25 @@ When rendering lists using `.map()`, React uses **keys** to identify which items
 React  hooks like useEffect, useMemo, and useCallback depend on dependency arrays to determine when to re-run or re-calculate.
 
 **Example: useEffect**
-```js
+```jsx
 useEffect(() => {
   fetchData();
 }, [userId]); // only runs when userId changes
 ```
 **Without dependencies:**
-```js
+```jsx
 useEffect(() => {
   fetchData(); // runs on every render ❌
 });
 ```
 **Example: useCallback**
-```js
+```jsx
 const handleClick = useCallback(() => {
   console.log('Clicked', userId);
 }, [userId]); // only re-created when userId changes
 ```
 **Example: useMemo**
-```js
+```jsx
 const sortedList = useMemo(() => {
   return list.sort((a, b) => a.value - b.value);
 }, [list]); // only recalculates when list changes
@@ -73,7 +73,7 @@ const sortedList = useMemo(() => {
   5. Use React.memo for pure components that depend only on props
 
 **Example: Combining Techniques**
-```js
+```jsx
 const UserList = React.memo(({ users }) => {
   const [selected, setSelected] = useState(null);
 
