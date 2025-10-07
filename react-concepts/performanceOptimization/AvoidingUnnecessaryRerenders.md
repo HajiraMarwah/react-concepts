@@ -92,7 +92,7 @@ const UserList = React.memo(({ users }) => {
   );
 });
 ```
-**Optimized Rendering**
+## Optimized Rendering
   - Stable keys prevent re-renders of other list items.
   - handleSelect is memoized and not re-created every render.
   - React.memo skips re-render if props haven’t changed.
