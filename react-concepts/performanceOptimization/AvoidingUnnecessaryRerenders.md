@@ -65,12 +65,12 @@ const sortedList = useMemo(() => {
 | **useMemo** | Memoizes computed values to prevent recalculation | Recalculates every render | Uses cached value until dependency changes |
 
 ---
-**Best Practices**
-✅ Use stable keys for list items (id not index)
-✅ Provide dependency arrays in hooks carefully
-✅ Use useCallback and useMemo to avoid passing new references unnecessarily
-✅ Avoid inline functions or objects inside components unless memoized
-✅ Use React.memo for pure components that depend only on props
+## Best Practices
+  1. Use stable keys for list items (id not index)
+  2. Provide dependency arrays in hooks carefully
+  3. Use useCallback and useMemo to avoid passing new references unnecessarily
+  4. Avoid inline functions or objects inside components unless memoized
+  5. Use React.memo for pure components that depend only on props
 
 **Example: Combining Techniques**
 ```js
