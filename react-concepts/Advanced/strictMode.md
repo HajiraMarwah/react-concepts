@@ -9,12 +9,11 @@ It does **not affect the production build**, but it performs extra checks and wa
 ---
 
 ## 💡 Why Use Strict Mode?
-
-✅ Detects **unsafe lifecycle methods** in class components  
-✅ Warns about **legacy string refs**  
-✅ Identifies **side effects in render**  
-✅ Detects **unexpected component re-renders**  
-✅ Helps ensure **best practices** for future React versions  
+ 1. Detects **unsafe lifecycle methods** in class components  
+ 2. Warns about **legacy string refs**  
+ 3. Identifies **side effects in render**  
+ 4. Detects **unexpected component re-renders**  
+ 5. Helps ensure **best practices** for future React versions  
 
 ---
 
