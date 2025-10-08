@@ -25,10 +25,6 @@ Using **Context API** with **useReducer** provides a clean and scalable way to m
 ┃ ┣ 🧱 Counter.js
 ┣ 🪄 App.js
 
-```jsx
-
----
-
 ## 🧠 Step 1: Create a Reducer
 
 A reducer defines **how state changes** in response to specific **actions**.
