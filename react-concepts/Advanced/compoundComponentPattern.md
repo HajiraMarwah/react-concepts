@@ -12,10 +12,10 @@ In short, it’s a way to let components work as a **family** rather than passin
 
 ## 💡 Why Use It?
 
-✅ Makes components more **reusable and flexible**  
-✅ Avoids **prop drilling** between deeply nested components  
-✅ Keeps the API **clean and declarative**  
-✅ Helps build components that feel **natural to use**, like `<Select>` with `<Option>` or `<Accordion>` with `<Item>`
+ -  Makes components more **reusable and flexible**  
+ -  Avoids **prop drilling** between deeply nested components  
+ -  Keeps the API **clean and declarative**  
+ -  Helps build components that feel **natural to use**, like `<Select>` with `<Option>` or `<Accordion>` with `<Item>`
 
 ---
 
