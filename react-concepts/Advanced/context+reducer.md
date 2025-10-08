@@ -1,4 +1,4 @@
-    # 🌐 Managing Global State with Context + useReducer in React
+🌐 Managing Global State with Context + useReducer in React
 
 ## 📘 Introduction
 
