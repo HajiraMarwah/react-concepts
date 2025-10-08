@@ -125,3 +125,8 @@ export default UncontrolledInput;
    1. Controlled components give React full control over form data — best for validation and predictable state.
    2. Uncontrolled components let the DOM manage the data — best for quick, simple inputs.
    3. Both can be mixed depending on the form’s complexity and performance needs.
+
+##  In short:
+
+🧩 Controlled = React controls input state
+🌿 Uncontrolled = DOM controls input state
