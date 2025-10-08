@@ -19,11 +19,11 @@ Using **Context API** with **useReducer** provides a clean and scalable way to m
 
 ## ⚙️ Basic Architecture
 📦 src/
- ┣ 📁 context/
- ┃ ┣ 🧩 GlobalStateContext.js
- ┣ 📁 components/
- ┃ ┣ 🧱 Counter.js
- ┣ 🪄 App.js
+┣ 📁 context/
+┃ ┣ 🧩 GlobalStateContext.js
+┣ 📁 components/
+┃ ┣ 🧱 Counter.js
+┣ 🪄 App.js
 
 ```jsx
 
