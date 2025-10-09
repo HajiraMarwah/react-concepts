@@ -133,29 +133,54 @@ Component re-renders with new state
 | 🌍 Global accessibility   | Context provides state anywhere without prop drilling. |
 | ⚡ Lightweight alternative | No need for Redux or external state libraries.         |
 
-## Example: Adding More Global Data
+---
+### Basic Architecture
+📦 src/
+┣ 📁 context/
+┃ ┣ 🧩 ThemeContext.js
+┣ 📁 components/
+┃ ┣ 🧱 ThemeToggler.js
+┣ 🪄 App.js
+## Example: Theme Toggler
+## 🧩 Step 1: Create Theme Context + Reducer
 
-You can easily scale your global state to handle user info, theme, auth, etc.
+**File:** `src/context/ThemeContext.js`
+
 ```jsx
-export const initialState = {
-  count: 0,
-  theme: "light",
-  user: { name: "Priyanka", loggedIn: false },
-};
+import React, { createContext, useReducer, useContext } from "react";
 
-export function reducer(state, action) {
+// 1️⃣ Initial state
+const initialState = { theme: "light" };
+
+// 2️⃣ Reducer function
+function themeReducer(state, action) {
   switch (action.type) {
     case "TOGGLE_THEME":
-      return { ...state, theme: state.theme === "light" ? "dark" : "light" };
-    case "LOGIN":
-      return { ...state, user: { name: action.payload, loggedIn: true } };
-    case "LOGOUT":
-      return { ...state, user: { name: "", loggedIn: false } };
+      return { theme: state.theme === "light" ? "dark" : "light" };
     default:
-      return state;
+      throw new Error(`Unhandled action type: ${action.type}`);
   }
 }
+
+// 3️⃣ Create context
+const ThemeContext = createContext();
+
+// 4️⃣ Provider component
+export const ThemeProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(themeReducer, initialState);
+
+  return (
+    <ThemeContext.Provider value={{ state, dispatch }}>
+      {children}
+    </ThemeContext.Provider>
+  );
+};
+
+// 5️⃣ Custom hook
+export const useTheme = () => useContext(ThemeContext);
 ```
+
+
 ## Summary Table
 | Concept              | Description                                                  |
 | -------------------- | ------------------------------------------------------------ |
