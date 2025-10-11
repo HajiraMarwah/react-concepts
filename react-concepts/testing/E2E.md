@@ -52,23 +52,23 @@ describe("Login Flow", () => {
     cy.url().should("include", "/dashboard");
     cy.contains("Welcome, user");
   });
-});
-```
+  });
+  ```
 **This test:**
   - Opens your login page
   - Types into input fields
   - Clicks the login button
   - Verifies the redirect and text on the dashboard
 
-  ## Example 2: E2E Test with Playwright
-   Setup
-     ```bash
-      npm install -D @playwright/test
-      npx playwright install
-      ```
-   Add a script to package.json:
-    ```json
-       "scripts": {
+## Example 2: E2E Test with Playwright
+   ### Setup
+       ```bash
+       npm install -D @playwright/test
+       npx playwright install
+       ```
+Add a script to package.json:
+      ```json
+        "scripts": {
        "test:e2e": "playwright test"
       }
       ```
