@@ -92,14 +92,15 @@ test("renders user list", async () => {
       ];
        ```
    3. Setup the server:
-    ```js
+      ```js
        // src/mocks/server.js
        import { setupServer } from "msw/node";
        import { handlers } from "./handlers";
 
        export const server = setupServer(...handlers);
-      ```
-  4. Configure Jest:
+       ```
+
+   4. Configure Jest:
       ```js
       // setupTests.js
        import { server } from "./mocks/server";
