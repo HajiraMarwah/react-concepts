@@ -51,3 +51,42 @@ test("MyButton renders correctly", () => {
     </button>
    `;
 ```
+
+## Subsequent Runs
+  - Jest compares the new render with the stored snapshot.
+  - If they differ, the test fails, signaling that the component’s output changed.
+
+## Updating Snapshots
+
+If the change in the component is intentional, you can update the snapshot using:
+```bash
+npm test -- -u
+```
+or 
+```bash
+jest -u
+```
+This updates the stored snapshot to match the new output.
+## When to Use Snapshot Tests
+| ✅ Good For                      | ❌ Avoid For                                 |
+| ------------------------------- | ------------------------------------------- |
+| Simple, stable UI components    | Rapidly changing UIs                        |
+| Detecting unexpected UI changes | Complex or dynamic DOM trees                |
+| Regression testing              | Components with random or time-based output |
+
+## Best Practices
+ - Keep snapshots small and meaningful.
+ - Review snapshot diffs carefully before updating.
+ - Don’t overuse — rely on functional tests for behavior.
+
+## Summary
+| Concept               | Description                                   |
+| --------------------- | --------------------------------------------- |
+| **Snapshot**          | Stored representation of a rendered component |
+| **Purpose**           | Detect unintended changes in UI               |
+| **Tool**              | Jest                                          |
+| **Command to Update** | `npm test -- -u`                              |
+| **Good For**          | Static, predictable UI components             |
+
+## In short:
+Snapshot testing ensures your React components’ UI stays consistent over time and helps catch accidental visual regressions.
