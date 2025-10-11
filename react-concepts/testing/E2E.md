@@ -61,20 +61,20 @@ describe("Login Flow", () => {
   - Verifies the redirect and text on the dashboard
 
 ## Example 2: E2E Test with Playwright
-   ### Setup
-       ```bash
-       npm install -D @playwright/test
-       npx playwright install
-       ```
-Add a script to package.json:
-      ```json
-        "scripts": {
-       "test:e2e": "playwright test"
-      }
-      ```
-    
-   **Example Test**
-     ```js
+
+###  Setup
+```bash
+npm install -D @playwright/test
+npx playwright install
+```
+Add a script to your package.json:
+```json
+"scripts": {
+  "test:e2e": "playwright test"
+}
+```   
+**Example Test**
+```js
      // tests/login.spec.js
       import { test, expect } from "@playwright/test";
 
@@ -86,7 +86,7 @@ Add a script to package.json:
      await expect(page).toHaveURL(/.*dashboard/);
      await expect(page.locator("text=Welcome, user")).toBeVisible();
      });
-    ```
+```
 This test does the same — but runs faster and can test across browsers automatically.
 
 ## Summary
