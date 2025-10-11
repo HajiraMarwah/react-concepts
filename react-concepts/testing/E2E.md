@@ -78,15 +78,15 @@ describe("Login Flow", () => {
      // tests/login.spec.js
       import { test, expect } from "@playwright/test";
 
-    test("user can log in successfully", async ({ page }) => {
-  await page.goto("http://localhost:3000/login");
-  await page.fill("input[name='email']", "user@example.com");
-  await page.fill("input[name='password']", "password123");
-  await page.click("button[type='submit']");
-  await expect(page).toHaveURL(/.*dashboard/);
-  await expect(page.locator("text=Welcome, user")).toBeVisible();
-   });
-   ```
+     test("user can log in successfully", async ({ page }) => {
+     await page.goto("http://localhost:3000/login");
+     await page.fill("input[name='email']", "user@example.com");
+     await page.fill("input[name='password']", "password123");
+     await page.click("button[type='submit']");
+     await expect(page).toHaveURL(/.*dashboard/);
+     await expect(page.locator("text=Welcome, user")).toBeVisible();
+     });
+    ```
 This test does the same — but runs faster and can test across browsers automatically.
 
 ## Summary
