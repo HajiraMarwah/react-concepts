@@ -90,6 +90,7 @@ describe("Login Flow", () => {
 This test does the same — but runs faster and can test across browsers automatically.
 
 ## Summary
+
 | Feature                | Cypress               | Playwright                |
 | ---------------------- | --------------------- | ------------------------- |
 | **Ease of Use**        | Beginner-friendly     | Slightly advanced         |
@@ -97,6 +98,8 @@ This test does the same — but runs faster and can test across browsers automat
 | **Cross-Browser**      | Chrome, Edge, Firefox | Chromium, Firefox, WebKit |
 | **Debugging UI**       | Excellent             | Limited but improving     |
 | **Parallel Execution** | Paid (Cypress Cloud)  | Built-in and free         |
+
+--- 
 
 ## Best Practices
  - Use data-testid or data-cy attributes for stable selectors.
@@ -115,6 +118,7 @@ project/
 │   └── login.spec.js
 └── package.json
 ```
+
 ## In short:
 
 🧩 E2E tests with Cypress or Playwright simulate real user actions — ensuring your full React app behaves correctly from start to finish.
