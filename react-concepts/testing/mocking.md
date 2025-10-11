@@ -93,12 +93,12 @@ test("renders user list", async () => {
        ```
    3. Setup the server:
     ```js
-    // src/mocks/server.js
-     import { setupServer } from "msw/node";
-     import { handlers } from "./handlers";
+       // src/mocks/server.js
+       import { setupServer } from "msw/node";
+       import { handlers } from "./handlers";
 
-     export const server = setupServer(...handlers);
-    ```
+       export const server = setupServer(...handlers);
+      ```
   4. Configure Jest:
       ```js
       // setupTests.js
@@ -122,4 +122,5 @@ test("renders user list", async () => {
 | Axios Mock Adapter | Great if using Axios                       | Axios-specific                             |
 | MSW                | Realistic API mocking, works in dev & test | Extra setup, larger dependency             |
 
-## Tip: Always mock APIs in tests to make them deterministic and independent of external services. Use MSW for end-to-end-like behavior, or Jest mocks for simple unit tests.
+## Tip:
+ Always mock APIs in tests to make them deterministic and independent of external services. Use MSW for end-to-end-like behavior, or Jest mocks for simple unit tests.
