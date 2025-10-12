@@ -1,13 +1,13 @@
-# 🌐 Fetch API vs Axios in React
+#  Fetch API vs Axios in React
 
 In React, we often need to fetch data from APIs or send data to servers.  
 Two popular ways to do this are **Fetch API** and **Axios**. Both are asynchronous and work well with React's lifecycle methods and hooks.
 
 ---
 
-## ⚡ Fetch API in React
+##  Fetch API in React
 
-### 📝 Description
+###  Description
 The **Fetch API** is built into JavaScript. In React, it’s commonly used inside `useEffect` to fetch data when a component mounts.
 
 **Example (GET Request)**
