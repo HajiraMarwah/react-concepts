@@ -177,6 +177,56 @@ function AddUser() {
   return <button onClick={handleAddUser}>Add User</button>;
 }
 ```
+**Axios Features**
+| Feature                             | Description                                           |
+| ----------------------------------- | ----------------------------------------------------- |
+| **Promise-based**                   | Supports `.then()` and `async/await`.                 |
+| **Request & Response Interceptors** | Modify requests or responses globally.                |
+| **Automatic JSON**                  | Axios automatically parses JSON responses.            |
+| **Error Handling**                  | Provides `.catch()` for handling errors.              |
+| **Cancel Requests**                 | Can cancel requests using `CancelToken`.              |
+| **Supports Headers**                | Easily send custom headers like Authorization tokens. |
+
+**Using Axios with Async/Await**
+```jsx
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
+function App() {
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const fetchData = async () => {
+    try {
+      const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+      setData(response.data);
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  if (loading) return <p>Loading...</p>;
+
+  return (
+    <div>
+      <h1>Posts</h1>
+      <ul>
+        {data.map(post => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default App;
+```
 **Best Practices in React**
    1. Use useEffect for data fetching on mount.
    2. Track loading and error states.
