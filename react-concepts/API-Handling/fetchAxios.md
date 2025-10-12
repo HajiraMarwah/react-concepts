@@ -10,6 +10,17 @@ Two popular ways to do this are **Fetch API** and **Axios**. Both are asynchrono
 ###  Description
 The **Fetch API** is built into JavaScript. In React, it’s commonly used inside `useEffect` to fetch data when a component mounts.
 
+**How it Works in React**
+  1. Fetch returns a Promise:
+    -  You call fetch(url, options) which returns a Promise.
+    -  You can chain .then() to handle the response and .catch() to handle errors.
+  2. Commonly used inside useEffect:
+    - This ensures that the data fetch occurs when the component mounts.
+    - You can also fetch data on events like button clicks.
+  3. State Management:
+    - Store the data in component state using useState.
+    - Optionally, manage loading and error states.
+
 **Example (GET Request)**
 ```jsx
 import React, { useEffect, useState } from 'react';
@@ -49,6 +60,44 @@ function UsersList() {
 
 export default UsersList;
 ```
+**POST Example in React**
+```jsx
+function AddUser() {
+  const handleAddUser = () => {
+    fetch('https://api.example.com/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ name: 'Priyanka', age: 25 })
+    })
+      .then(res => res.json())
+      .then(data => console.log('User added:', data))
+      .catch(err => console.error('Error:', err));
+  };
+
+  return <button onClick={handleAddUser}>Add User</button>;
+}
+```
+**Best Practices in React**
+  1. Use useEffect for initial data fetching.
+  2. Track loading and error states.
+  3. Always handle response errors (check response.ok).
+  4. Abort fetch on component unmount to prevent memory leaks:
+  ```jsx
+  useEffect(() => {
+  const controller = new AbortController();
+
+  fetch('https://api.example.com/users', { signal: controller.signal })
+    .then(res => res.json())
+    .then(data => setUsers(data))
+    .catch(err => {
+      if (err.name !== 'AbortError') setError(err.message);
+    });
+
+   return () => controller.abort(); // Cleanup on unmount
+   }, []);
+   ```
 **Key Features**
  - Built-in, no dependency required
  - Returns Promises
