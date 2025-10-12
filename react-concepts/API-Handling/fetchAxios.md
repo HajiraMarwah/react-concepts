@@ -105,16 +105,24 @@ function AddUser() {
  - Works well with useEffect or event handlers
 
 ## Axios in React
- # Description
-Axios is a third-party HTTP client that simplifies requests and provides features like interceptors, automatic JSON parsing, and error handling.
+Axios is a popular third-party HTTP client for making API requests. It is widely used in React because it simplifies data fetching and offers features that the native Fetch API doesn’t provide.
+
+**Key Features**
+  - Automatically transforms JSON data (no need to call res.json()).
+  - Supports request/response interceptors.
+  - Built-in error handling for HTTP errors.
+  - Supports timeouts and request cancellation.
+  - Works in both browser and Node.js.
+  - Clean syntax, especially with async/await.
 
 Install Axios:
 ```bash
 npm install axios
 # or
 yarn add axios
+
 ```
-**Example (GET Request)**
+**Basic GET Example**
 ```jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -126,8 +134,8 @@ function UsersList() {
 
   useEffect(() => {
     axios.get('https://api.example.com/users')
-      .then(res => {
-        setUsers(res.data);
+      .then(response => {
+        setUsers(response.data); // Axios automatically parses JSON
         setLoading(false);
       })
       .catch(err => {
@@ -149,7 +157,57 @@ function UsersList() {
 }
 
 export default UsersList;
+
 ```
+**POST Example**
+```jsx
+function AddUser() {
+  const handleAddUser = async () => {
+    try {
+      const response = await axios.post('https://api.example.com/users', {
+        name: 'Priyanka',
+        age: 25
+      });
+      console.log('User added:', response.data);
+    } catch (err) {
+      console.error('Error adding user:', err.message);
+    }
+  };
+
+  return <button onClick={handleAddUser}>Add User</button>;
+}
+```
+**Best Practices in React**
+   1. Use useEffect for data fetching on mount.
+   2. Track loading and error states.
+   3. Use async/await for cleaner code.
+   4. Use interceptors to handle authentication tokens or logging:
+```jsx
+axios.interceptors.request.use(config => {
+  config.headers.Authorization = 'Bearer your_token';
+  return config;
+});
+```
+5. Cancel requests when components unmount:
+```jsx
+useEffect(() => {
+  const controller = new AbortController();
+
+  axios.get('https://api.example.com/users', { signal: controller.signal })
+    .then(res => setUsers(res.data))
+    .catch(err => {
+      if (err.name !== 'CanceledError') setError(err.message);
+    });
+
+  return () => controller.abort();
+}, []);
+```
+**Summary**
+ - Axios is more feature-rich than Fetch.
+ - Automatically handles JSON parsing and HTTP errors.
+ - Clean integration with React Hooks like useEffect.
+ - Supports advanced features like interceptors, timeouts, and request cancellation.
+
 **Key Features**
  - Automatic JSON parsing
  - Supports request/response interceptors
