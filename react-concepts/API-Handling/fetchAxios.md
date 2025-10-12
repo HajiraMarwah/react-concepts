@@ -10,7 +10,7 @@ Two popular ways to do this are **Fetch API** and **Axios**. Both are asynchrono
 ### 📝 Description
 The **Fetch API** is built into JavaScript. In React, it’s commonly used inside `useEffect` to fetch data when a component mounts.
 
-### ✅ Example (GET Request)
+**Example (GET Request)**
 ```jsx
 import React, { useEffect, useState } from 'react';
 
@@ -49,7 +49,7 @@ function UsersList() {
 
 export default UsersList;
 ```
-## Key Features
+**Key Features**
  - Built-in, no dependency required
  - Returns Promises
  - Must manually handle errors and JSON parsing
