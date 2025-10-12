@@ -117,12 +117,12 @@ export default App;
   1. Use async/await for cleaner asynchronous code.
   2. Handle loading and error states to improve user experience.
   3. Separate API calls into a dedicated service file:
-    ```js
+  ```js
     // api.js
     import axios from 'axios';
     const API_URL = 'https://jsonplaceholder.typicode.com';
     export const fetchPosts = () => axios.get(`${API_URL}/posts`);
-    ```
+  ```
   4. Use environment variables for API base URLs (.env file):
   ```env
     REACT_APP_API_URL=https://jsonplaceholder.typicode.com
