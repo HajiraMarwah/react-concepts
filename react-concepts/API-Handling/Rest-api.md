@@ -127,4 +127,15 @@ export default App;
   ```env
     REACT_APP_API_URL=https://jsonplaceholder.typicode.com
    ```
-    
+  5. Cancel requests on component unmount to avoid memory leaks using AbortController or Axios CancelToken.
+  6. Handle authentication with headers:
+  ```js
+    axios.get('/posts', {
+    headers: { Authorization: `Bearer ${token}` }
+   });
+  ```
+
+## Summary
+  - REST API allows structured communication between client and server.
+  - React integrates REST APIs using Fetch or Axios.
+  - Following best practices improves code readability, error handling, and maintainability.
