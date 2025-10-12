@@ -44,3 +44,96 @@ Response:
   }
 }
 ```
+### 3. Mutations
+
+Mutations are used to create, update, or delete data on the server.
+
+Example:
+```graphql
+mutation {
+  addPost(title: "New Post", body: "This is a new post") {
+    id
+    title
+  }
+}
+```
+### 4. Variables
+GraphQL allows you to pass dynamic values using variables instead of hardcoding them.
+
+Example:
+```graphql
+query GetPost($postId: ID!) {
+  post(id: $postId) {
+    id
+    title
+    body
+  }
+}
+```
+Variables:
+```json 
+{
+  "postId": "1"
+}
+```
+### 5. Advantages of GraphQL
+| Feature                      | Description                                                  |
+| ---------------------------- | ------------------------------------------------------------ |
+| **Fetch only what you need** | Avoid over-fetching data.                                    |
+| **Single endpoint**          | Unlike REST which may have multiple endpoints.               |
+| **Strongly typed**           | Schema defines types, reducing errors.                       |
+| **Versionless**              | No versioning required—clients request only required fields. |
+| **Real-time support**        | Supports subscriptions for live data updates.                |
+
+### 6. Integrating GraphQL in React
+You can use libraries like Apollo Client or Relay to consume GraphQL APIs.
+
+Example with Apollo Client:
+```js
+import React from 'react';
+import { ApolloClient, InMemoryCache, ApolloProvider, useQuery, gql } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'https://example.com/graphql',
+  cache: new InMemoryCache()
+});
+
+const GET_POSTS = gql`
+  query {
+    posts {
+      id
+      title
+      body
+    }
+  }
+`;
+
+function Posts() {
+  const { loading, error, data } = useQuery(GET_POSTS);
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  return (
+    <ul>
+      {data.posts.map(post => (
+        <li key={post.id}>{post.title}</li>
+      ))}
+    </ul>
+  );
+}
+
+export default function App() {
+  return (
+    <ApolloProvider client={client}>
+      <Posts />
+    </ApolloProvider>
+  );
+}
+```
+
+## Summary
+ - GraphQL is a flexible alternative to REST for APIs.
+ - Clients request only the data they need.
+ - Operations are Queries (read) and Mutations (write).
+ - React apps can easily integrate GraphQL using Apollo Client or Relay.
