@@ -1,4 +1,4 @@
-# ⚡ Using TypeScript in React: Typing Props and State
+#  Using TypeScript in React: Typing Props and State
 
 TypeScript is a superset of JavaScript that adds **static typing**.  
 In React, using TypeScript helps:

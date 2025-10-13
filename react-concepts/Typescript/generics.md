@@ -1,4 +1,4 @@
-# ⚡ Using Generics in React Components with TypeScript
+#  Using Generics in React Components with TypeScript
 
 Generics in TypeScript allow you to create **reusable components** that can work with **different types** while keeping type safety.  
 They are especially useful for components like lists, tables, or wrappers where the type of data may vary.
