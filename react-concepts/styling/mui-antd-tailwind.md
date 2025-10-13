@@ -370,7 +370,7 @@ modifyVars: {
   - Harder to fully customize design.
   - Uses Less (not pure CSS), which may need extra setup.
 
-## 4️⃣ Comparison Table
+##  Comparison Table
 | Feature                 | 🌀 Tailwind CSS           | 🎨 MUI            | 🏗️ Ant Design               |
 | ----------------------- | ------------------------- | ----------------- | ---------------------------- |
 | **Type**                | Utility-first CSS         | Component Library | Component Library            |
@@ -381,14 +381,14 @@ modifyVars: {
 | **Performance**         | 🟢 Excellent              | 🟡 Moderate       | 🔴 Heavier                   |
 | **Ideal Use Case**      | Custom UI / Landing Pages | Modern apps       | Dashboards / Enterprise apps |
 
-## 5️⃣ When to Use Which?
+## When to Use Which?
 | Scenario                                              | Recommended Library |
 | ----------------------------------------------------- | ------------------- |
 | You want **complete control** over UI design          | 🌀 Tailwind CSS     |
 | You want **ready-made Material Design components**    | 🎨 MUI              |
 | You need **enterprise-grade dashboards or admin UIs** | 🏗️ Ant Design      |
 
-## 6️⃣ Summary
+##  Summary
 | Library          | Best For                   | Customization | Learning Curve | Performance  |
 | ---------------- | -------------------------- | ------------- | -------------- | ------------ |
 | **Tailwind CSS** | Design freedom & custom UI | ⭐⭐⭐⭐          | ⚡ Medium       | 🔥 Excellent |
