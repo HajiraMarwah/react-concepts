@@ -1,17 +1,17 @@
-# 🎨 Styling React Apps: Tailwind CSS vs MUI vs Ant Design
+#  Styling React Apps: Tailwind CSS vs MUI vs Ant Design
 
 Modern React apps often use **UI libraries or frameworks** to speed up development and maintain a consistent design system.
 
 Three of the most popular ones are:
-- ⚡ **Tailwind CSS** – Utility-first CSS framework
-- 🧩 **Material UI (MUI)** – Component library following Google’s Material Design
-- 🏗️ **Ant Design (AntD)** – Enterprise-level UI component framework
+-  **Tailwind CSS** – Utility-first CSS framework
+-  **Material UI (MUI)** – Component library following Google’s Material Design
+-  **Ant Design (AntD)** – Enterprise-level UI component framework
 
 ---
 
-## 🌈 1️⃣ Tailwind CSS
+##  1️⃣ Tailwind CSS
 
-### 💡 What is Tailwind CSS?
+###  What is Tailwind CSS?
 **Tailwind CSS** is a **utility-first CSS framework** that allows you to style components using pre-defined CSS classes directly in JSX.
 
 Instead of writing custom CSS files, you compose styles using class names.
