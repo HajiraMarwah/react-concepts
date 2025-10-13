@@ -148,7 +148,8 @@ export default App;
 | **`sx` prop**               | Inline styling with theme support | `<Box sx={{ p: 2, color: 'primary.main' }}>`      |
 | **`styled()` API**          | Create custom styled components   | `const CustomBox = styled(Box)({ padding: 16 });` |
 | **`makeStyles()`** (legacy) | JSS-based styling method (v4)     | Deprecated in v5                                  |
-| **`ThemeProvider`**         | Global theming and overrides      | `<ThemeProvider theme={theme}>`                   |
+| **`ThemeProvider`**         | Global theming and overrides      | `<ThemeProvider theme={theme}>` |
+
 **Commonly Used Components**
 | Component   | Description                      |
 | ----------- | -------------------------------- |
