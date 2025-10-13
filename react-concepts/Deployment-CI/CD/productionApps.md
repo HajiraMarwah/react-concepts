@@ -76,14 +76,14 @@ You can host your React app on many platforms. Below are popular ones:
          "deploy": "gh-pages -d build"
          }
       }
-    ```
+   ```
     3. Run:
       ```bash
          npm run deploy
        ```
    ✅ Your app will be available at https://username.github.io/repo-name.
 
-  **🔹 2.4 AWS S3 + CloudFront**
+  **🔹2.4 AWS S3 + CloudFront**
   For enterprise deployments:
     1. Build your app:
       ```bash
@@ -108,3 +108,57 @@ Use different .env files for each environment:
 .env.development
 .env.production
 ```
+Access them in code using:
+```js
+process.env.REACT_APP_API_URL
+```
+**Example:**
+```ini
+REACT_APP_API_URL=https://api.myapp.com
+```
+
+## 4. CI/CD (Continuous Integration & Deployment)
+
+CI/CD automates building, testing, and deploying your React app whenever code changes.
+
+Example with GitHub Actions
+
+Create a file .github/workflows/deploy.yml:
+```yaml
+name: Deploy React App
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build project
+        run: npm run build
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v2
+        with:
+          publish-dir: ./build
+          production-deploy: true
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+```
+
+## How It Works
+  - Every time you push to main, GitHub:
+     1. Installs dependencies.
+     2. Builds the app.
+     3. Deploys automatically to Netlify (or any host you configure).
+    ✅ Fully automated deployment pipeline.
