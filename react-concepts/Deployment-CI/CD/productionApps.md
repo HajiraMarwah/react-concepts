@@ -83,8 +83,8 @@ You can host your React app on many platforms. Below are popular ones:
        ```
    ✅ Your app will be available at https://username.github.io/repo-name.
 
-  **🔹2.4 AWS S3 + CloudFront**
-  For enterprise deployments:
+  **🔹 2.4 AWS S3 + CloudFront** For enterprise deployments:
+
     1. Build your app:
       ```bash
         npm run build 
