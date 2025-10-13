@@ -1,11 +1,11 @@
-# 🛡️ Protecting Routes in React
+#  Protecting Routes in React
 
 In React applications, **protected routes** are pages or components that should only be accessible to **authenticated users** — for example, dashboards, profiles, or admin panels.  
 If a user is not authenticated, they should be redirected (usually to a login page).
 
 ---
 
-## 🔍 Why Protect Routes?
+##  Why Protect Routes?
 
 Protecting routes ensures:
 - Only **authorized users** can access certain areas of your app.
@@ -14,7 +14,7 @@ Protecting routes ensures:
 
 ---
 
-## ⚙️ Common Authentication Flow
+##  Common Authentication Flow
 
 1. User logs in via a form.
 2. The app sends credentials to a backend API.
@@ -24,13 +24,13 @@ Protecting routes ensures:
 
 ---
 
-## 🧱 Implementing Protected Routes
+##  Implementing Protected Routes
 
 Let’s explore two approaches using **React Router v6**.
 
 ---
 
-### ✅ Example 1 — Basic Protected Route
+###  Example 1 — Basic Protected Route
 
 ```jsx
 import { Navigate } from "react-router-dom";
