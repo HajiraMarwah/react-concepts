@@ -84,18 +84,17 @@ You can host your React app on many platforms. Below are popular ones:
    ✅ Your app will be available at https://username.github.io/repo-name.
 
   **🔹 2.4 AWS S3 + CloudFront** For enterprise deployments:
-
-       1. Build your app:
-          ```bash
-           npm run build 
-          ```
-       2. Upload build folder to an S3 bucket:
+    1. Build your app:
+     ```bash
+     npm run build 
+     ```
+    2. Upload build folder to an S3 bucket:
           ```bash
              aws s3 sync build/ s3://your-bucket-name --delete
           ```
-       3. Enable Static Website Hosting in S3.
-       4. Use CloudFront CDN for faster global delivery.
-       5. Configure cache invalidation:
+    3. Enable Static Website Hosting in S3.
+    4. Use CloudFront CDN for faster global delivery.
+    5. Configure cache invalidation:
           ```bash
             aws cloudfront create-invalidation --distribution-id XYZ123 --paths "/*"
           ```
