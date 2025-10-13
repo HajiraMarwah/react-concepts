@@ -1,4 +1,4 @@
-### Authentication in React: JWT vs OAuth 2.0
+## Authentication in React: JWT vs OAuth 2.0
 
 Modern web apps (like those built with React) often need to authenticate users and manage secure access to protected APIs.
 Two popular mechanisms for doing this are JWT (JSON Web Tokens) and OAuth 2.0.
