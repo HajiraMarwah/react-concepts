@@ -98,10 +98,10 @@ const Counter: React.FC = () => {
       <p>Count: {count}</p>
       <p>Name: {name}</p>
       <button onClick={() => setCount(count + 1)}>Increment</button>
-         <button onClick={() => setName("Alice")}>Set Name</button>
-          </div>
-        );
-       };
+      <button onClick={() => setName("Alice")}>Set Name</button>
+    </div>
+    );
+};
 ```
 **Key Points**
  - Type can be inferred from the initial state.
