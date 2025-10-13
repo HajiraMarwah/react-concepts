@@ -1,4 +1,4 @@
-# ⚡ Understanding Webpack in React
+#  Understanding Webpack in React
 
 Webpack is a **module bundler** that helps you compile JavaScript (and other assets) for the browser.  
 In React projects, Webpack is often used under the hood (for example, with Create React App), but understanding it helps in **customizing builds**, optimizing performance, and managing assets.
