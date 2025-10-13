@@ -99,7 +99,7 @@ You can host your React app on many platforms. Below are popular ones:
     ```bash
       aws cloudfront create-invalidation --distribution-id XYZ123 --paths "/*"
     ```
-    ✅ Scalable and secure hosting with global caching.
+     - ✅ Scalable and secure hosting with global caching.
 
 ## 3. Setting Up Environment Variables
 
@@ -161,4 +161,4 @@ jobs:
      1. Installs dependencies.
      2. Builds the app.
      3. Deploys automatically to Netlify (or any host you configure).
-    ✅ Fully automated deployment pipeline.
+     - ✅ Fully automated deployment pipeline.
