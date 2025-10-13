@@ -66,17 +66,31 @@ const Greeting: React.FC<GreetingProps> = ({ name, age }) => {
 | Popularity      | More recommended in modern React                  | Less recommended (official docs suggest normal functions) |       |
 | Default Props   | Requires manual handling                          | Can use `defaultProps` (but discouraged in TypeScript)    |       |
 
+
 ## 4️⃣ Pros and Cons
-   1. Using React.FC
-         **Pros**
-          - Automatically types children.
-          - Enforces return type.
-          - Can make code more explicit.
-         **Cons**:
-           - Forces children even if you don’t need them.
-           - defaultProps typing may be tricky in TypeScript.
-           - Slightly less flexible than normal function components.
-           
+
+### Using `React.FC`
+
+**Pros**
+- Automatically types `children`.
+- Enforces return type (`JSX.Element | null`).
+- Can make code more explicit.
+
+**Cons**
+- Forces `children` even if you don’t need them.
+- `defaultProps` typing may be tricky in TypeScript.
+-  Slightly less flexible than normal function components.
+
+### Using Normal Function Component
+
+**Pros**
+- Simpler and more flexible.
+- Recommended by React team.
+- Easier to define props and handle default props.
+
+**Cons**
+-  Need to type `children` manually if used.
+
 ## 5️⃣ Recommended Usage
    - Use normal function components for most cases.
    - Use React.FC if you want automatic children typing or prefer explicit return type enforcement.
