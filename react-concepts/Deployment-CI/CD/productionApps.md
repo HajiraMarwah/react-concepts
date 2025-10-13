@@ -68,7 +68,7 @@ You can host your React app on many platforms. Below are popular ones:
       npm install gh-pages --save-dev
     ```
    2. Add these to your package.json:
-   ```json
+    ```json
       {
        "homepage": "https://username.github.io/repo-name",
        "scripts": {
@@ -76,7 +76,7 @@ You can host your React app on many platforms. Below are popular ones:
          "deploy": "gh-pages -d build"
          }
       }
-   ```
+    ```
     3. Run:
       ```bash
          npm run deploy
