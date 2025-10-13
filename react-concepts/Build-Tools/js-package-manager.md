@@ -1,4 +1,4 @@
-# 📦 JavaScript Package Managers — npm, Yarn, and pnpm
+#  JavaScript Package Managers — npm, Yarn, and pnpm
 
 When building React (or any JavaScript) applications, we rely on **package managers** to install, update, and manage project dependencies.  
 
