@@ -41,7 +41,7 @@ function Counter() {
 export default Counter;
 ```
  ## How Virtual DOM Works Here:
-   1. Initial Render: React creates a Virtual DOM tree for '<div>', '<h1>', and '<button>'.
+   1. Initial Render: React creates a Virtual DOM tree for `<div>`, `<h1>`, and `<button>`.
    2. State Change: Clicking the button updates the count state.
    3. VDOM Update: React creates a new Virtual DOM tree with the updated count.
    4. Diffing: React compares the old and new Virtual DOM trees.

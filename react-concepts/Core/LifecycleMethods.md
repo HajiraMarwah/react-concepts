@@ -75,7 +75,7 @@ class LifecycleDemo extends React.Component {
   }
 
   componentDidMount() {
-    console.log("4. Component Did Mount - Good for API calls");
+    console.log("Component Did Mount - Good for API calls");
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -84,7 +84,7 @@ class LifecycleDemo extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("6. Component Did Update - Component re-rendered");
+    console.log(" Component Did Update - Component re-rendered");
   }
 
   componentWillUnmount() {
