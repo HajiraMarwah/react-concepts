@@ -3,12 +3,17 @@ import './App.css';
 import Home from "./Home";
 import About from "./About";
 import Contact from "./Contact";
-import Dashboard from "./Dashboard/Dashboard";
+// import Dashboard from "./Dashboard/Dashboard";  (nested if)
 import Profile from "./Dashboard/Profile";
 import Settings from "./Dashboard/Settings";
-import Login from "./programmatic/Login";
+// import Login from "./programmatic/Login";
+import ProtectedRoute from "./Proteced-routes/ProtectedRoute";
+import Login from "./Proteced-routes/Login";
+import Dashboard from "./Proteced-routes/Dashboard";
+import { useState } from "react";
 
 function App() {
+  const[isAuth,setIsAuth]=useState(null)
   return (
     <div className="App">
 
@@ -33,7 +38,7 @@ function App() {
         <Route path="settings" element={<Settings />} />
       </Routes>
       </BrowserRouter> */}
-      <BrowserRouter>
+      {/* <BrowserRouter>
        <nav style={{ marginBottom: "20px" }}>
         <Link to="/" style={{ marginRight: "10px" }}>Home</Link>
         <Link to="/login" style={{ marginRight: "10px" }}>Login</Link>
@@ -43,6 +48,23 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+      </BrowserRouter> */}
+      <BrowserRouter>
+      <nav>
+        <Link to="/">Home</Link> |
+        <Link to="/login">Login</Link> |
+        <Link to="/dashboard">Dashboard</Link>
+      </nav>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login  setIsAuth={setIsAuth} />} />
+        <Route path="/dashboard" element={
+          <ProtectedRoute isAuth={isAuth}>
+            <Dashboard />
+          </ProtectedRoute>
+         } />
+
       </Routes>
       </BrowserRouter>
     </div>
