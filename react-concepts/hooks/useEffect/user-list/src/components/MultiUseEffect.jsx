@@ -10,6 +10,10 @@ function MultiUseEffect() {
     console.log("component mounted");
   }, []);
 
+  //no dependency array-renders evrytime if something changes
+  useEffect(() => {
+    console.log("component comes every render");
+  },);
   //rdependency array count-runs everytime count changes value
   useEffect(() => {
     console.log(`counter is ${count}`);

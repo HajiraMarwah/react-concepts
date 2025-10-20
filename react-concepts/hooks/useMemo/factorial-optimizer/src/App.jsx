@@ -1,37 +1,30 @@
-import { useState,useMemo } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react'
+import { useState } from 'react'
+import { useMemo } from 'react'
 
-function slowFactorial(n){
-  console.log("caculating factorial....")
+const slowFactorial=(n)=>{
   if(n<=0)return 1
-  let result=1
+  console.log("computing recalculations....")
+  let result
   for(let i=1;i<=n;i++){
-   
-    for(let j=0;j<1e6;j++){}  // not needed only for heavy calculation
+    // for(let j=0;j<1e6;j++){} usefull only for expensive math
     result*=i
   }
   return result
 }
 function App() {
-  const [number, setNumber] = useState(5)
+  const[number,setNumber]=useState(5)
   const[extra,setExtra]=useState(0)
-  // With useMemo - Factorial only recalculates when "number" changes
- const fact=useMemo(()=>slowFactorial(number),[number])
-
- 
-  // Without useMemo-runs Every render → factorial recalculates calling "caculating factorial...." everytime
-  //  const fact = slowFactorial(number);
-
+  // const fact=slowFactorial(number)
+  const fact=useMemo(()=>slowFactorial(number),[number])
   return (
-    <>
-    <h1>Factorial Optimizer</h1>
-    <input type='number' value={number} onChange={(e)=>setNumber(parseInt(e.target.value))} />
-    <p>Number:{number}</p>
-    <p>Fcatorial:{fact}</p>
-    <button onClick={()=>setExtra(extra+1)}>Rendered (extra={extra})</button>
-    </>
+    <div>
+      <h1>Factorial Optimizer</h1>
+      <input  type='number' value={number} onChange={(e)=>setNumber(parseInt(e.target.value))}/>
+      <p>Number:{number}</p>
+      <p>Factorial:{fact}</p>
+      <button onClick={()=>setExtra(extra+1)}>Rendered:{extra}times</button>
+    </div>
   )
 }
 

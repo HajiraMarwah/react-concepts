@@ -7,7 +7,7 @@ const Child=React.memo(({onClick})=>{
   return <button onClick={onClick}>Increment</button>
 });
 function App() {
-  const [text, setTect] = useState("")
+  const [text, setText] = useState("")
   const [count, setCount] = useState(0)
 
 //Without useCallback → new function created on every render
@@ -27,7 +27,7 @@ const Increment=useCallback(()=>{
     <>
     <h1>Count:{count}</h1>
     <Child  onClick={Increment}/>
-    <input type='text' value={text} placeholder='type something' onChange={(e)=>setTect(e.target.value)} />
+    <input type='text' value={text} placeholder='type something' onChange={(e)=>setText(e.target.value)} />
     <p>Typed:{text}</p>
     </>
   )
