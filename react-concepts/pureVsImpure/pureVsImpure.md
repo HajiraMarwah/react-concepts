@@ -63,3 +63,28 @@ function Greeting({ name }) {
        - React can easily optimize rendering.
        - Pure components make debugging easier.
        - They help React’s reconciliation process (diffing the virtual DOM).
+
+## React’s PureComponent
+
+React.PureComponent is a class-based component that implements a shallow comparison of props and state to avoid unnecessary re-renders.
+```js
+class MyComponent extends React.PureComponent {
+  render() {
+    console.log("Rendered!");
+    return <div>{this.props.value}</div>;
+  }
+}
+```
+It only re-renders when props.value changes.
+## Summary
+| Feature                    | Pure Function | Impure Function |
+| -------------------------- | ------------- | --------------- |
+| Same output for same input | ✅ Yes         | ❌ No            |
+| Causes side effects        | ❌ No          | ✅ Yes           |
+| Easy to test and debug     | ✅ Yes         | ❌ No            |
+| Preferred in React         | ✅ Yes         | ❌ No            |
+
+## In Short
+
+A pure function in React is predictable, side-effect-free, and depends only on its inputs.
+React encourages writing pure components to make your UI consistent and performant.
