@@ -1,10 +1,10 @@
-# 🧠 Pure vs Impure Functions in React
+#  Pure vs Impure Functions in React
 
 In React (and JavaScript in general), functions can be **pure** or **impure** depending on whether they **affect or depend on external state**.
 
 ---
 
-## ✅ Pure Functions
+##  Pure Functions
 
 A **pure function** is a function that:
 1. **Always returns the same output** for the same input.
