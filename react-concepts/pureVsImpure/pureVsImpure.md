@@ -10,7 +10,7 @@ A **pure function** is a function that:
 1. **Always returns the same output** for the same input.
 2. **Does not cause side effects** (it doesn’t modify anything outside its scope).
 
-### 💡 Example:
+**Example 1:**
 ```javascript
 function add(a, b) {
   return a + b;
@@ -20,7 +20,7 @@ function add(a, b) {
   - The output depends only on a and b.
   - It doesn’t modify any external variables or data.
 
-## React Example:
+**Example 2:**
 ```js
 function Greeting({ name }) {
   return <h1>Hello, {name}!</h1>;
@@ -34,7 +34,7 @@ function Greeting({ name }) {
 **An impure function:**
  - May return different outputs for the same inputs.
  - Causes side effects, like changing global variables, making API calls, or modifying the DOM.
-**Example:**
+**Example 1:**
 ```js
 let counter = 0;
 
@@ -47,7 +47,7 @@ function increment() {
   - It modifies an external variable (counter).
   - The same input (none) can yield different outputs.
 
-## React Example:
+**Example 2:**
 ```js
 function Greeting({ name }) {
   console.log("Rendered at:", new Date());
