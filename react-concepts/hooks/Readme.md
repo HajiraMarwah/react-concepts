@@ -281,3 +281,11 @@ Key Points About useReducer
    1.Avoid code duplication
    2.Make components cleaner
    3.Share logic between multiple components
+  
+## Summary of React Hooks
+| Rule                               | Description                                                   |
+| ---------------------------------- | ------------------------------------------------------------- |
+| 🧩 Call Hooks at the top level     | Don’t call them inside loops, conditions, or nested functions |
+| ⚙️ Call Hooks from React functions | Only inside React function components or custom hooks         |
+| 🪝 Name custom hooks with “use”    | e.g., `useFetch`, `useAuth`, etc.                             |
+| 🧠 Use ESLint                      | Helps catch Hook rule violations automatically                |
