@@ -7,8 +7,8 @@ import Cancellation from './components/Cancellation/Cancellation';
 function App() {
   return (
     <div className="App">
-      {/* <ErrorHandling /> */}
-       {/* <Retries /> */}
+      <ErrorHandling />
+       <Retries />
       <Cancellation /> 
     </div>
   );

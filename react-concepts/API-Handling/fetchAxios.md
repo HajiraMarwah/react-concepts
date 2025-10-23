@@ -8,7 +8,7 @@ Two popular ways to do this are **Fetch API** and **Axios**. Both are asynchrono
 ##  Fetch API in React
 
 ###  Description
-The **Fetch API** is built into JavaScript. In React, it’s commonly used inside `useEffect` to fetch data when a component mounts.
+The **Fetch API** is built into JavaScript.And in React, it’s commonly used inside `useEffect` to fetch data when a component mounts.
 
 **How it Works in React**
   1. Fetch returns a Promise:
