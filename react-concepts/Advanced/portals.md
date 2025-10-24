@@ -17,7 +17,7 @@ import { createPortal } from "react-dom";
 createPortal(child, container);
 ```
 **Explanation**
-  - child → The React node you want to render (e.g., <div>, <Modal />)
+  - child → The React node you want to render (e.g., `<div>`, `<Modal />`)
   - container → The target DOM element (e.g., document.getElementById('root-modal'))
 
 **Why Use Portals?**
