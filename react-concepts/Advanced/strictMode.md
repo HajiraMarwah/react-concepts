@@ -40,7 +40,7 @@ root.render(
     - render method
     - State updater functions
     - useEffect, useLayoutEffect cleanup functions
-    Example: A useEffect hook with side effects might run twice in development to ensure it’s safe and idempotent.
+    Example: A useEffect hook with side effects might run twice in development to ensure it’s safe and idempotent(operation is one that gives the same result no matter how many times you apply it.).
     - Helps you write resilient code that is ready for concurrent rendering and future React features.
 ## Example: Detecting Side Effects
 ```js

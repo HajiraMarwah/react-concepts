@@ -1,33 +1,29 @@
-import React, { useState, useEffect } from "react";
-import withLoading from "./components/withLoading";
-import UserList from "./components/UserLIst";
+import React, { useEffect, useState } from 'react'
+import withLoading from './components/withLoading'
+import UserList from './components/UserLIst'
 
-const UserListWithLoading = withLoading(UserList);
-
+const UserListWithLoading=withLoading(UserList)
 function App() {
-  const [loading, setLoading] = useState(true);
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    // Fetch users from JSONPlaceholder API
+  const [users, setUsers] = useState([])
+  const[loading,setLoading]=useState(true)
+  useEffect(()=>{
     fetch("https://jsonplaceholder.typicode.com/users")
-      .then((response) => response.json())
-      .then((data) => {
-        setUsers(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching users:", error);
-        setLoading(false);
-      });
-  }, []);
-
+    .then((res)=>res.json())
+    .then((data)=>{
+      setUsers(data)
+      setLoading(false)
+    })
+    .catch((err)=>{
+      console.console.error("Error fetching",err);
+      setLoading(false)
+    })
+  })
   return (
-    <div style={{ padding: "20px", fontFamily: "Arial" }}>
-      <h1>User List</h1>
+    <div>
+      <h1>Users List</h1>
       <UserListWithLoading isLoading={loading} users={users} />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

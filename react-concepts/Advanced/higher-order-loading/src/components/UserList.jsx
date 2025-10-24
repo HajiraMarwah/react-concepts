@@ -1,13 +1,18 @@
-import React from "react";
+import React from 'react'
 
-const UserList = ({ users }) => {
+function UserList({users}) {
+  console.log("coming inside userlist")
   return (
-    <ul>
-      {users.map(user => (
+    <div>
+      <h1>Users</h1>
+      <ul>
+         {users.map((user)=>(
         <li key={user.id}>{user.name}</li>
       ))}
-    </ul>
-  );
-};
+      </ul>
+     
+    </div>
+  )
+}
 
-export default UserList;
+export default UserList
