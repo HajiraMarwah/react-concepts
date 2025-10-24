@@ -91,8 +91,8 @@ function App() {
   1. React creates a Fiber tree representing <App />.
   2. On setCount, React builds a new Fiber tree.
   3. It compares (diffs) the new and old virtual trees:
-   - <h1> remains → React only updates text content.
-   - <button> is unchanged → React reuses the DOM node.
+   - `<h1>` remains → React only updates text content.
+   - `<button>` is unchanged → React reuses the DOM node.
   4. In the commit phase, React updates the DOM efficiently without re-rendering the whole tree.
 
 ## Summary
