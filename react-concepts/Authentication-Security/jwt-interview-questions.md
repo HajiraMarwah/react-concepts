@@ -50,14 +50,15 @@ You can store JWT tokens in:
  1. Receive JWT from Backend
  After login, your backend API sends a JWT. For example:
 ```json
- {
+{
  "token": "your.jwt.token"
 }
+```
 2. Store JWT in Local Storage
 ```js
 // Suppose `jwtToken` is the token you received
- localStorage.setItem('token', jwtToken);
-  ```
+localStorage.setItem('token', jwtToken);
+```
 3. Retrieve JWT Later
 ```js
 const token = localStorage.getItem('token');
