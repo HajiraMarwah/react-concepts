@@ -72,3 +72,40 @@ localStorage.removeItem('accessToken');
   2. App sends API requests with access token.
   3. If API returns 401 → use refresh token to get new access token.
   4. On logout → clear access token from memory and refresh token from cookie.
+
+## Example JWT Authentication in React
+
+```jsx
+import { useState } from "react";
+import axios from "axios";
+
+function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [token, setToken] = useState("");
+
+  const handleLogin = async () => {
+    const res = await axios.post("http://localhost:4000/login", { username, password });
+    setToken(res.data.token);
+    localStorage.setItem("token", res.data.token);
+  };
+
+  const getProfile = async () => {
+    const res = await axios.get("http://localhost:4000/profile", {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` }
+    });
+    console.log(res.data);
+  };
+
+  return (
+    <div>
+      <input placeholder="username" onChange={e => setUsername(e.target.value)} />
+      <input type="password" placeholder="password" onChange={e => setPassword(e.target.value)} />
+      <button onClick={handleLogin}>Login</button>
+      <button onClick={getProfile}>Get Profile</button>
+    </div>
+  );
+}
+
+export default Login;
+```
