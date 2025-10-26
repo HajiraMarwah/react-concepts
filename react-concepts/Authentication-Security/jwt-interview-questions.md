@@ -423,6 +423,32 @@ function App() {
   );
 }
 ```
+## 25. How do you persisy jwt authentication state after page reload in react
+1. Store access token in :
+  - Use localStorage(persists across reloads)or sessionStorage(persists until tab is closed).
+  -  Use HTTP-only Cookies (Recommended for Security)
+3. On app startup, either:
+   - Read from storage or
+   - Call refresh token endpoint to get a new access token.
+4. Then update React auth state → seamless user experience.
+## 26. If your jwt contains sensitive user info how would you protect it it on client side
+**1️⃣ Don’t put sensitive info in the JWT if possible**
+  - JWT is base64-encoded, not encrypted → anyone with the token can read it.
+  - Only include: User ID,Roles / permissions,Minimal claims necessary for auth
+  - Avoid: passwords, personal data, secrets.
+**2️⃣Store tokens securely**:
+  - Store refresh token in HTTP-only, Secure, SameSite cookie (not accessible via JS).
+  - Keep access token in memory only (React state, Redux, or context).
+**3️⃣ Encrypt JWT payload if absolutely needed**
+  - If you must include sensitive info, encrypt the payload on the server.
+  - Use JWE (JSON Web Encryption) instead of plain JWT.
+  - Decrypt on the server only → never rely on client to read sensitive claims.
+**4️⃣ Use short-lived access tokens**
+  - Even if a token leaks, it will expire quickly (e.g., 15–60 min).
+  - Use a refresh token to get new access tokens instead of long-lived tokens.
+**5️⃣Minimal exposure on client**
+  - Don’t expose JWT to third-party scripts.
+  - Avoid sending JWT in URLs → use headers instead (Authorization: Bearer <token>).
 ### Summary
 | Task             | Recommended Method          |
 | ---------------- | --------------------------- |
