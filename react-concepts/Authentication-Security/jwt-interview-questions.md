@@ -221,6 +221,208 @@ JWT ensures data integrity using a digital signature. Here’s a simple breakdow
       - When the token is received, the server recalculates the signature using the same secret/key.
       - If the calculated signature matches the token’s signature → the token is valid.
       - If someone modifies the payload or header → the signature won’t match → token is rejected.
+## 17. How do you refresh a  access token using refresh token flow
+   1. Initial login
+     - User logs in.
+     - Server responds with:
+       1. Access token (short-lived, e.g., 15 minutes)
+       2. Refresh token (long-lived, e.g., 7 days)
+     - You store:
+       1. Access token in memory or local state
+       2. Refresh token securely (HTTP-only cookie is safest)
+    2. Making an API request
+     Include the access token in the request headers:
+     ```js
+     Authorization: `Bearer ${accessToken}`
+     ```
+    3. Access token expires
+      - Server responds with 401 Unauthorized.
+      - Now you use the refresh token to get a new access token.
+    4.  Refresh token flow
+       - Make a request to the server’s refresh endpoint:
+         ```js
+         fetch('/refresh-token', {
+        method: 'POST',
+        credentials: 'include', // if using http-only cookie
+        })
+       .then(res => res.json())
+       .then(data => {
+         setAccessToken(data.accessToken); // update state
+        });
+        ```
+        - Server validates the refresh token and sends back a new access token.
+    5. Retry the failed request
+       Once you get a new access token, retry the API request that failed.
+    6. Optional: Automate refresh-using a axios interceptor or fetch wrapper to automatically refresh the token when 401 happens.
+
+## 18. how do you send JWTs in api request from react
+**Answer**
+1. Store the JWT after login
+After the user logs in, your backend usually returns a JWT access token. You can store it:
+  - Memory / React state (safer, cleared on refresh)
+  - LocalStorage or SessionStorage (persistent but vulnerable to XSS)
+  - HTTP-only cookie (most secure, not accessible by JS)
+  **Example (storing in state):** 
+   ```js
+   const [accessToken, setAccessToken] = useState(null);
+   // After login
+   setAccessToken(data.accessToken);
+   ```
+2. Send JWT in API request
+   - The standard way is to use the Authorization header with the Bearer scheme.
+
+**Example using fetch:**
+```js
+fetch('https://api.example.com/data', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${accessToken}` // <-- send JWT here
+  }
+})
+  .then(res => res.json())
+  .then(data => console.log(data));
+```
+**Example using axios**
+```js
+axios.get('https://api.example.com/data', {
+  headers: {
+    'Authorization': `Bearer ${accessToken}`
+  }
+})
+.then(res => console.log(res.data));
+```
+3. Using HTTP-only cookies (optional, more secure)
+ - If your backend sets the JWT in an HTTP-only cookie:
+ - You don’t manually attach the token.
+ - Just include credentials: 'include' in fetch or withCredentials: true in Axios.
+```js
+fetch('https://api.example.com/data', {
+  method: 'GET',
+  credentials: 'include', // sends cookie automatically
+})
+.then(res => res.json())
+.then(data => console.log(data));
+```
+## 19. how do you implement logout functionality in JWT
+ 1. Remove the access token from memory or state.
+ 2. Optionally, remove the refresh token (if stored in localStorage or cookies).
+ 3. Redirect the user to the login page.
+ ```js
+ import { setAccessToken } from './auth';
+
+function logout() {
+  // Clear access token
+  setAccessToken(null);
+
+  // Optionally, clear any user info in state
+  // Clear refresh token if stored in localStorage
+  localStorage.removeItem('refreshToken');
+
+  // Redirect to login
+  window.location.href = '/login';
+}
+```
+## 20. pros/cons of using JWT in SPA compared with traditional cookies session
+| Feature               | JWT (SPA)                    | Session Cookies            |
+| --------------------- | ---------------------------- | -------------------------- |
+| Server state          | Stateless                    | Stateful                   |
+| Scalability           | Easy                         | Needs session store        |
+| Cross-domain / mobile | Easy                         | Harder                     |
+| Revocation / logout   | Hard                         | Easy                       |
+| Security              | Depends on storage           | HTTP-only cookies are safe |
+| Complexity            | Higher (refresh token logic) | Lower                      |
+| Bandwidth             | Higher (token payload)       | Lower (just ID)            |
+
+## 21. what happens if JWT signature is invalid
+1. Client calls protected API
+ - Sends JWT in the request header.
+2. Server checks the JWT
+ - Signature Not valid → Responds 401 Unauthorized → request fails. 
+ - Token expired→ Responds 401 Unauthorized → request fails.
+3.  Client reaction
+ - If using refresh token → request new access token → retry API.
+ - If no refresh token → redirect user to login.
+
+ ## Scenario based
+ ## 22. The backedn issues jwt that expries n 1hour but userstays on app for 2 hour how do you handle seamless re-authentication
+   **Answer**:
+   Use Refresh Tokens for Seamless Re-authentication
+   **Steps:**
+1.  Login
+     - User logs in to server that returns:
+       1. Access token (short-lived, e.g., 1 hour)
+       2. Refresh token (longer-lived, e.g., 7 days, stored securely in HTTP-only cookie)
+2. Use Access Token for API calls
+   - Access token sent in Authorization: Bearer <token> header.
+3. Detect expired token
+   - If server responds with 401 Unauthorized → access token expired.
+4. Call Refresh Token endpoint
+   - Frontend sends refresh token (usually in cookie) to /refresh-token.
+   - Server validates refresh token → issues new access token.
+5. Retry original request
+   - Frontend retries the API call automatically with the new token.
+6. Logout if refresh fails
+   - If refresh token is invalid/expired → force user to login again.
+## 23. If your api returns with 401  unauthorized how do you handle  globally in react
+  **Answer**
+  the best way to handle 401 Unauthorized globally is to use an Axios interceptor (or fetch wrapper) so that any API call that gets 401 triggers a common handler—like refreshing the token or redirecting to login.
+  **How it works**
+  1. Any API call goes through the interceptor.
+  2. If server responds 401 Unauthorized, interceptor tries to refresh the access token.
+  3. If refresh works → retries the original request automatically.
+  4. If refresh fails → logs out the user and redirects to login.
+## 24 How dou you Restrict routes
+**Steps to Restrict Routes**
+ 1. Check if user is authenticated
+ 2. Usually check if access token exists or use a global auth state.
+ 3. If authenticated → allow access to the route.
+ 4. If not authenticated → redirect to login page.
+ 5. (Optional) Check roles or permissions for finer access control.
+
+**Example Using React Router v6**
+```js
+// ProtectedRoute.js
+import React from 'react';
+import { Navigate } from 'react-router-dom';
+import { getAccessToken } from './auth';
+
+export default function ProtectedRoute({ children }) {
+  const token = getAccessToken();
+
+  if (!token) {
+    // User not logged in → redirect to login
+    return <Navigate to="/login" replace />;
+  }
+
+  return children; // user logged in → allow access
+}
+```
+**Usage in Routes**
+```js
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ProtectedRoute from './ProtectedRoute';
+import Dashboard from './Dashboard';
+import Login from './Login';
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route 
+          path="/dashboard" 
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          } 
+        />
+      </Routes>
+    </Router>
+  );
+}
+```
 ### Summary
 | Task             | Recommended Method          |
 | ---------------- | --------------------------- |
