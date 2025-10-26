@@ -46,27 +46,27 @@ xxxxx.yyyyy.zzzzz
 **Answer:**
 You can store JWT tokens in:
 - **Local Storage:** Easy to use but vulnerable to XSS attacks,Only store tokens in localStorage if you understand the security risks.
-    **Steps to store jwt in localStorage**
-     1. Receive JWT from Backend
-        After login, your backend API sends a JWT. For example:
-       ```json
-         {
-           "token": "your.jwt.token"
-          }
-    2. Store JWT in Local Storage
-    ```js
-    // Suppose `jwtToken` is the token you received
-      localStorage.setItem('token', jwtToken);
-      ```
-    3. Retrieve JWT Later
-        ```js
-        const token = localStorage.getItem('token');
-        console.log(token);
-        ```
-    4.  Remove JWT on Logout
-    ```js
-    localStorage.removeItem('token');
-     ```
+**Steps to store jwt in localStorage**
+ 1. Receive JWT from Backend
+ After login, your backend API sends a JWT. For example:
+```json
+ {
+ "token": "your.jwt.token"
+}
+2. Store JWT in Local Storage
+```js
+// Suppose `jwtToken` is the token you received
+ localStorage.setItem('token', jwtToken);
+  ```
+3. Retrieve JWT Later
+```js
+const token = localStorage.getItem('token');
+console.log(token);
+```
+4.  Remove JWT on Logout
+```js
+localStorage.removeItem('token');
+ ```
 - **Session Storage:** Similar to local storage but clears on tab close.
 - **Cookies**:
 - **HTTP-only Cookies:** Most secure since JavaScript can’t access them (prevents XSS), but CSRF protection is needed.
