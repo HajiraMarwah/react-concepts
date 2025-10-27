@@ -202,7 +202,7 @@ const isLoggedIn = token && !isTokenExpired(token);
 No, JWT is not secure by default.
 JWT provides integrity (tamper-proof) but not confidentiality by default — you must implement proper storage, transmission, and expiration strategies to make it secure.
 
-## 15. How to make JWRT secure
+## 15. How to make JWT secure
  **Answer**
   1. Always use HTTPS.
   2. Store JWT in HTTP-only, Secure cookies if possible.
@@ -345,7 +345,7 @@ function logout() {
  - If no refresh token → redirect user to login.
 
  ## Scenario based
- ## 22. The backedn issues jwt that expries n 1hour but userstays on app for 2 hour how do you handle seamless re-authentication
+ ## 22. The backend issues jwt that expries n 1hour but userstays on app for 2 hour how do you handle seamless re-authentication
    **Answer**:
    Use Refresh Tokens for Seamless Re-authentication
    **Steps:**
