@@ -1,22 +1,17 @@
-// App.jsx
-import React from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { increment, decrement } from "./actions";
-
-const App = () => {
-  const count = useSelector(state => state.count);
-  const dispatch = useDispatch();
-
+import React from 'react'
+import {useSelector,useDispatch} from "react-redux"
+import {increment,decrement} from "./Redux/action"
+function App() {
+  const count=useSelector(state=>state.count)
+  const dispatch=useDispatch()
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h2>Redux Counter App</h2>
-      <h3>Count: {count}</h3>
-      <button onClick={() => dispatch(increment())}>Increment</button>
-      <button onClick={() => dispatch(decrement())} style={{ marginLeft: "10px" }}>
-        Decrement
-      </button>
+    <div>
+      <h1>Redux counter</h1>
+      <h2>Counter:{count}</h2>
+      <button onClick={()=>dispatch(increment())}>+</button>
+      <button onClick={()=>dispatch(decrement())}>-</button>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
