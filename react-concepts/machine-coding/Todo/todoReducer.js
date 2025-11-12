@@ -1,7 +1,9 @@
-import React,{useState,useReducer}from "react"
+import React,{useState,useReducer,useEffect}from "react"
 const initialState=[]
 const reducer=(state,action)=>{
   switch(action.type){
+    case "LOAD_TODO":
+      return action.payload
     case "ADD_TODO":
       return[
         ...state,
@@ -23,6 +25,16 @@ function App(){
   const[texts,setTexts]=useState("")
   const[editingId,setEditingId]=useState(null)
   const[newText,setNewText]=useState("")
+  
+  useEffect(()=>{
+    const storeTodos=JSON.parse(localStorage.getItem("todos"))
+    if(storeTodos){
+    dispatch({type:"LOAD_TODO",payload:storeTodos})
+    }
+  },[])
+  useEffect(()=>{
+    localStorage.setItem("todos",JSON.stringify(todos))
+  },[todos])
   const handleAdd=(id)=>{
     if(texts.trim()!==""){
       dispatch({type:"ADD_TODO",payload:texts})
