@@ -1,71 +1,71 @@
-import React, { useState } from "react";
-
-function SimpleForm() {
-  const [formData, setFormData] = useState({ email: "", password: "" });
-  const [errors, setError] = useState({});
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-  const validate = () => {
-    const newError = {};
-    if (!formData.email.trim()) {
-      newError.email = "please enter valid email";
-    } else if (
-      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email)
-    ) {
-      newError.email = "please enter valid email";
+import React,{useState} from "react"
+function App(){
+  const[name,setName]=useState("")
+  const[password,setPassword]=useState("")
+  const[email,setEmail]=useState("")
+  const[error,setError]=useState({})
+  const validateName=value=>{
+    if(!value.trim())return "Name is required"
+    if(value.length<3) return "Name should be more than 3 characters"
+    return ""
+  }
+  const validateEmail=value=>{
+    if(!value.trim())return "email is required"
+    else if(!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email))return "Please enter valid email"
+    return ""
+  }
+  const validatePassword=value=>{
+    if(!value.trim())return "Password is required"
+    if(value.length<6)return "Password must be more than 6 characters"
+    return ""
+  }
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    const nameError=validateName(name)
+    const passwordError=validatePassword(password)
+    const emailError=validateEmail(email)
+    setError({
+      name:nameError,
+      password:passwordError,
+      email:emailError
+    })
+    if(!nameError && !passwordError && !emailError){
+      alert(`Form is submitted`)
     }
-
-    if (!formData.password.trim()) {
-      newError.password = "please enter password";
-    } else if (formData.password.length < 6) {
-      newError.password = "Password should contain atleast 6 characters";
-    }
-    setError(newError);
-    return Object.keys(newError).length === 0;
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (validate()) {
-      console.log("login successfull");
-      alert(`login is sucessfully submitted`);
-      setFormData({ email: "", password: "" });
-    } else {
-      console.log("login is failed");
-    }
-  };
-  return (
-    <div className="App">
+  }
+  return(
+    <div>
+      <h1>Form</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-          />
-          {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
+          <label>Name:</label>
+          <input type="text" value={name} onChange={(e)=>{
+          setName(e.target.value)
+            const err=validateName(e.target.value)
+            setError((prev)=>({...prev,name:err}))
+          }} />
+          {error.name&&<p style={{color:"red"}}>{error.name}</p>}
         </div>
         <div>
-          <label>password:</label>
-          <input
-            type="password"
-            name="password"
-            value={formData.password}
-            onChange={handleChange}
-          />
-          {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
+          <label>Email:</label>
+          <input type="email" value={email} onChange={(e)=>{
+            setEmail(e.target.value)
+            const err=validateEmail(e.target.value)
+            setError((prev)=>({...prev,email:err}))
+          }} />
+          {error.email&&<p style={{color:"red"}}>{error.email}</p>}
+        </div>
+        <div>
+          <label>Password:</label>
+          <input type="password" value={password} onChange={(e)=>{
+            setPassword(e.target.value)
+            const err=validatePassword(e.target.value)
+            setError((prev)=>({...prev,password:err}))
+          }} />
+          {error.password&&<p style={{color:"red"}}>{error.password}</p>}
         </div>
         <button type="submit">Login</button>
       </form>
-    </div>
-  );
+    </div>)
 }
-
-export default SimpleForm;
+export default App
